@@ -1,0 +1,146 @@
+@import "tailwindcss";
+
+:root {
+  --gold: #FFD166;
+  --gold-mid: #FFB400;
+  --gold-deep: #E09800;
+  --neon-blue: #00AAEF;
+  --bg: #080808;
+  --card-bg: #111111;
+  --card-border: #1e1e1e;
+}
+
+body {
+  background: var(--bg);
+  color: #F0F0F0;
+  font-family: 'Source Sans 3', sans-serif;
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Gold gradient text */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #FFD166 0%, #FFB400 50%, #E09800 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Neon blue glow */
+.text-neon {
+  color: #00AAEF;
+  text-shadow: 0 0 20px rgba(0,170,239,0.5), 0 0 40px rgba(0,170,239,0.2);
+}
+
+/* Card gold glow border */
+.card-glow {
+  background: var(--card-bg);
+  border: 1px solid rgba(255,180,0,0.12);
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.2s;
+}
+.card-glow:hover {
+  border-color: rgba(255,180,0,0.45);
+  box-shadow: 0 0 30px rgba(255,180,0,0.1);
+  transform: translateY(-3px);
+}
+
+/* Gold button */
+.btn-gold {
+  background: linear-gradient(135deg, #FFD166, #FFB400);
+  color: #000;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+  box-shadow: 0 4px 20px rgba(255,180,0,0.35);
+}
+.btn-gold:hover {
+  box-shadow: 0 4px 35px rgba(255,180,0,0.55);
+  transform: translateY(-2px);
+}
+
+/* Outline button */
+.btn-outline {
+  border: 1.5px solid rgba(255,209,102,0.45);
+  color: #FFD166;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+}
+.btn-outline:hover {
+  border-color: #FFD166;
+  background: rgba(255,209,102,0.08);
+  transform: translateY(-2px);
+}
+
+/* Section label */
+.section-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #00AAEF;
+}
+
+/* Skill chip */
+.skill-chip {
+  background: rgba(255,209,102,0.05);
+  border: 1px solid rgba(255,209,102,0.15);
+  color: #ccc;
+  border-radius: 99px;
+  padding: 5px 14px;
+  font-size: 0.82rem;
+  transition: all 0.2s;
+}
+.skill-chip:hover {
+  background: rgba(255,209,102,0.1);
+  border-color: rgba(255,209,102,0.4);
+  color: #FFD166;
+}
+
+/* Divider */
+.gold-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,180,0,0.25), transparent);
+}
+
+/* Hero glow bg */
+.hero-glow {
+  background: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(255,180,0,0.06) 0%, transparent 70%);
+}
+
+/* Orbital ring animation */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.spin-slow { animation: spin-slow 20s linear infinite; }
+
+@keyframes spin-reverse {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+.spin-reverse { animation: spin-reverse 30s linear infinite; }
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.7; }
+}
+.pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+
+/* Nav backdrop */
+.nav-blur {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(8,8,8,0.85);
+  border-bottom: 1px solid rgba(255,180,0,0.08);
+}
