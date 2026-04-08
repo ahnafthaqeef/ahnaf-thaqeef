@@ -1,367 +1,614 @@
 import Link from "next/link";
+import Image from "next/image";
 
-const capabilities = [
+// ── Data ──────────────────────────────────────────────────────────────────────
+
+const experience = [
   {
-    icon: "🧠",
-    title: "LLM Applications",
-    desc: "RAG pipelines, AI copilots, intelligent automation. End-to-end from prompt engineering to production deployment.",
+    company: "Nestlé Malaysia",
+    role: "Transport Hub (THUB) Specialist — Supply Chain",
+    period: "Jan 2025 – Present",
+    location: "Selangor, Malaysia",
+    accent: "#7c3aed",
+    highlights: [
+      { metric: "~MYR 200k", desc: "dispute cost avoidance — designed & deployed AI + telematics POC for 3PL fleet management, integrated AI dashcam evidence into dispute workflows" },
+      { metric: "40%", desc: "pipeline automation completion — authored 120+ user stories and ACs for ERP-to-freight automation (SAP TM integration)" },
+      { metric: "80%", desc: "active system usage in 3 months — engineered automated Fleet Safety Inspection reporting (Power BI + Power Automate)" },
+      { metric: "~MYR 50k/mo", desc: "surcharge reduction — delivered stakeholder analytics and negotiated data-driven routing changes to reduce Singapore surcharge exposure by ~50%" },
+      { metric: "21 providers", desc: "real-time OTC/OTD visibility via Power BI analytics platform — replaced manual weekly reporting across all 3PL relationships" },
+    ],
   },
   {
-    icon: "📄",
-    title: "Document Intelligence",
-    desc: "PDF parsing, data extraction, contract analysis, and financial document Q&A — powered by AI.",
+    company: "Nestlé Malaysia",
+    role: "First Line Manager — Shah Alam Complex",
+    period: "May 2024 – Jan 2025",
+    location: "Selangor, Malaysia",
+    accent: "#06b6d4",
+    highlights: [
+      { metric: "~MYR 300k/mo", desc: "operational savings — spearheaded AI-driven DMO: digital dashboards, automated OPLs, leadership analytics; unplanned stoppages reduced to 5.3%" },
+      { metric: "95%", desc: "process adoption in 2 months — structured training, runbooks, and change management across the production floor" },
+      { metric: "ISA-95 L3", desc: "MES capability map designed — architecture documentation adopted as production deployment blueprint" },
+    ],
   },
   {
-    icon: "📊",
-    title: "Analytics & Insights",
-    desc: "Financial analysis, anomaly detection, data visualisation tools that turn raw data into business decisions.",
-  },
-  {
-    icon: "⚡",
-    title: "Rapid Prototyping",
-    desc: "Idea to working demo in days. MVP to production-ready in weeks. No over-engineering.",
+    company: "Biocon Biologics",
+    role: "Production Associate — Drug Substance",
+    period: "Jan 2023 – Apr 2024",
+    location: "Johor, Malaysia",
+    accent: "#8b5cf6",
+    highlights: [
+      { metric: "USD 20k", desc: "cost reduction per batch — implemented chemical preparation scheduling optimisation" },
+      { metric: "ISA-95 L3", desc: "MES interface test cases designed for SAP-to-MES integration in regulated pharmaceutical environment (Honeywell)" },
+      { metric: "FDA/EMA/NPRA", desc: "regulatory audit readiness — led deviation investigations and CAPA implementation" },
+    ],
   },
 ];
 
 const projects = [
   {
     title: "FinAI Intel",
-    desc: "Bank statement analyzer, financial doc Q&A (RAG), and AI ROI calculator — built for enterprise finance teams.",
-    tags: ["RAG", "Document AI", "LLM"],
-    url: "https://finai.aibizmy.com",
-    accent: "#FFB400",
-  },
-  {
-    title: "AcaraHQ",
-    desc: "Full-featured event management platform. Multi-role auth, event builder, registration, and analytics.",
-    tags: ["SaaS", "Full-stack", "Supabase"],
-    url: "https://events.aibizmy.com",
-    accent: "#00AAEF",
+    label: "FLAGSHIP",
+    desc: "Enterprise financial intelligence platform — 6 AI tools purpose-built for finance teams and credit analysts.",
+    tools: [
+      "Bank Statement Analyzer — PDF ingestion, LLM transaction categorisation, anomaly flagging",
+      "Financial Doc Q&A — RAG pipeline with keyword-ranked retrieval, streaming responses",
+      "Credit Report Explainer — CTOS/CCRIS intelligence with 300-850 health scoring",
+      "Fraud Signal Brief Generator — multi-signal risk synthesis with case reference IDs",
+      "Document Consistency Checker — cross-validates payslip, bank statement, SSM cert",
+      "AI ROI Calculator — real-time financial modelling with streamed business case",
+    ],
+    stack: ["Next.js 16", "TypeScript", "Groq Llama 3.3 70B", "pdf-parse v2", "RAG", "Vercel"],
+    url: "https://finai.ahnafthaqeef.com",
+    accent: "#8b5cf6",
   },
   {
     title: "AI Resume Builder",
-    desc: "ATS-optimised resume tailoring with streaming AI. Job scanner, cover letter gen, and match scoring.",
-    tags: ["LLM", "Streaming", "PDF Parsing"],
+    label: "LIVE",
+    desc: "ATS-optimised resume tailoring with streaming AI. Job description analysis, PDF/DOCX parsing, match scoring, and cover letter generation. Multi-step orchestration pipeline.",
+    tools: [],
+    stack: ["Next.js 15", "Groq SDK", "Supabase", "pdf-parse", "mammoth", "Streaming SSE"],
     url: "https://resume.aibizmy.com",
-    accent: "#FFD166",
+    accent: "#7c3aed",
   },
   {
-    title: "Cash Flow Forecaster",
-    desc: "AI-powered cash flow projection for SMEs. Input transactions, get 90-day AI forecast with risk flags.",
-    tags: ["Financial AI", "Analytics"],
-    url: "https://cashflow.aibizmy.com",
-    accent: "#FFB400",
-  },
-  {
-    title: "AI Contract Builder",
-    desc: "Generate legally structured contracts from plain English. Clause suggestions, export-ready output.",
-    tags: ["Document AI", "LLM"],
-    url: "https://contract.aibizmy.com",
-    accent: "#00AAEF",
+    title: "AcaraHQ",
+    label: "LIVE",
+    desc: "Enterprise event management SaaS. Multi-role auth (admin / organiser / attendee), event builder, registration workflows, attendee analytics, and Row Level Security.",
+    tools: [],
+    stack: ["Next.js", "TypeScript", "Supabase", "RLS", "Vercel"],
+    url: "https://events.aibizmy.com",
+    accent: "#06b6d4",
   },
   {
     title: "Halal Scanner",
-    desc: "Scan product ingredients against halal criteria. Instant AI verdict with detailed ingredient breakdown.",
-    tags: ["AI", "Mobile-first"],
+    label: "LIVE",
+    desc: "Scan product ingredients against halal criteria. Instant AI verdict with detailed ingredient breakdown and compliance classification.",
+    tools: [],
+    stack: ["AI", "Mobile-first", "Next.js"],
     url: "https://halal.aibizmy.com",
-    accent: "#FFD166",
+    accent: "#10b981",
   },
 ];
 
-const skills = [
-  "LLM / Generative AI", "RAG Systems", "Prompt Engineering",
-  "Next.js 15/16", "TypeScript", "Python",
-  "Supabase / PostgreSQL", "pgvector", "REST APIs",
-  "Groq API", "Anthropic Claude", "OpenAI API",
-  "AWS Bedrock", "AWS Textract", "Vercel", "Cloudflare",
-  "PDF / Document Parsing", "Streaming AI (SSE)",
-  "TailwindCSS", "Playwright", "FFmpeg", "Whisper ASR",
-  "FastAPI", "Solution Architecture",
+const skillGroups = [
+  {
+    label: "AI & LLM",
+    accent: "#8b5cf6",
+    items: ["Large Language Models", "Generative AI", "RAG Architecture", "Prompt Engineering", "Streaming AI (SSE)", "Anthropic Claude", "Groq SDK", "OpenAI API", "AWS Bedrock", "AWS Textract", "Document Intelligence", "PDF/DOCX Parsing"],
+  },
+  {
+    label: "Full-Stack Dev",
+    accent: "#06b6d4",
+    items: ["Next.js 15/16", "TypeScript", "React", "Python", "REST API Design", "Tailwind CSS", "Node.js"],
+  },
+  {
+    label: "Cloud & Infra",
+    accent: "#7c3aed",
+    items: ["AWS (Bedrock, Textract, S3, Lambda, IAM)", "Vercel", "Cloudflare", "Supabase"],
+  },
+  {
+    label: "Data",
+    accent: "#06b6d4",
+    items: ["PostgreSQL", "pgvector", "Vector Databases", "SQL", "Power BI", "Data Modelling"],
+  },
+  {
+    label: "Enterprise",
+    accent: "#8b5cf6",
+    items: ["SAP ECC / SAP TM / SAP PP-PI", "MES (ISA-95 L3)", "ERP Integration", "SIT/SAT Testing", "Solution Architecture"],
+  },
+  {
+    label: "Tools",
+    accent: "#475569",
+    items: ["Git", "Jira", "Confluence", "Power Automate", "n8n", "Playwright", "Whisper ASR", "FFmpeg"],
+  },
+];
+
+const events = {
+  conferences: [
+    { name: "Microsoft AI Tour KL 2025", dates: "May 2025", org: "Microsoft", location: "MITEC, Kuala Lumpur", type: "Summit" },
+    { name: "World AI Show Malaysia 2025", dates: "Oct 2025", org: "Trescon + MDEC", location: "DoubleTree Hilton, KL", type: "Summit" },
+    { name: "MDX Summit 2025", dates: "2025", org: "MDEC", location: "Kuala Lumpur", type: "Summit" },
+    { name: "Malaysia AI Summit (AI Summit KL)", dates: "Oct 2023 · Sep 2024", org: "MDEC", location: "Kuala Lumpur", type: "Summit" },
+    { name: "Malaysian AI Nexus (MAIN) Conference", dates: "Oct 2023 · Oct 2024", org: "MAIC / MOSTI", location: "KLCC, KL", type: "Conference" },
+    { name: "Malaysia Tech Week", dates: "Oct 2023 · Q4 2024", org: "MDEC", location: "Kuala Lumpur", type: "Festival" },
+    { name: "AWS Summit Kuala Lumpur", dates: "Aug 2023 · Aug 2024", org: "Amazon Web Services", location: "Kuala Lumpur", type: "Summit" },
+    { name: "Google Cloud Summit KL", dates: "Oct 2023", org: "Google Cloud", location: "Kuala Lumpur", type: "Summit" },
+    { name: "Microsoft AI Tour KL", dates: "Nov 2023", org: "Microsoft", location: "Kuala Lumpur", type: "Summit" },
+    { name: "World AI Show & Awards KL", dates: "Aug 2023", org: "Trescon", location: "Kuala Lumpur", type: "Summit" },
+  ],
+  hackathons: [
+    { name: "lablab.ai RAISE your HACK 2025", dates: "Jul 2025", org: "lablab.ai", location: "Online", type: "Hackathon" },
+    { name: "lablab.ai AI Genesis Hackathon", dates: "Nov 2025", org: "lablab.ai", location: "Online", type: "Hackathon" },
+    { name: "GenAI Hackathon 2024", dates: "Apr – May 2024", org: "AI Society Malaysia + Google Cloud", location: "Online / KL Finale", type: "Hackathon" },
+    { name: "CIMB 3D ASEAN Hackathon", dates: "Nov 2023", org: "CIMB Group", location: "Kuala Lumpur", type: "Hackathon" },
+    { name: "lablab.ai AI Hackathons", dates: "2023 – 2024", org: "lablab.ai", location: "Online", type: "Hackathon" },
+    { name: "AI Hackathon — Skool Community", dates: "2026", org: "Sambrina Romanov", location: "Online", type: "Hackathon" },
+  ],
+};
+
+const education = [
+  {
+    inst: "University Malaya (UM)",
+    degree: "Bachelor of Chemical Engineering",
+    detail: "CGPA 3.16 / 4.00 · Second Class Upper · Dean's Honours List",
+    year: "Oct 2022",
+  },
+  {
+    inst: "University Malaya (UM)",
+    degree: "Foundation in Physical Sciences",
+    detail: "CGPA 4.00 / 4.00 · First Class",
+    year: "May 2017",
+  },
+];
+
+const certs = [
+  { name: "ISO 9001, 14001 & 45001 Internal Auditor", issuer: "Meta Minds International", date: "May 2025" },
+  { name: "Graduate Engineer", issuer: "Board of Engineers Malaysia", date: "Feb 2023" },
+  { name: "Six Sigma Yellow Belt", issuer: "6sigmastudy", date: "Jun 2023" },
 ];
 
 const stats = [
-  { value: "16+", label: "AI Apps Built" },
-  { value: "< 1 wk", label: "Idea to Live Demo" },
-  { value: "100%", label: "Free-Tier Infra" },
-  { value: "3+", label: "Active SaaS Products" },
+  { value: "16+", label: "AI Apps Shipped" },
+  { value: "MYR 500k+", label: "Measurable Business Impact" },
+  { value: "3+", label: "Live SaaS Products" },
+  { value: "4+", label: "Years with AI" },
 ];
+
+// ── Page ──────────────────────────────────────────────────────────────────────
 
 export default function Home() {
   return (
     <main>
-      {/* ── NAV ─────────────────────────────────────────────────────── */}
+
+      {/* ── NAV ── */}
       <nav className="nav-blur fixed top-0 left-0 right-0 z-50">
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <span className="text-gold-gradient font-black text-xl">AT</span>
-          <div className="hidden md:flex items-center gap-8">
-            {["About", "Projects", "Skills", "Contact"].map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="text-sm font-semibold text-gray-400 hover:text-white transition-colors tracking-wide"
-              >
-                {item}
+        <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+          <span className="text-gradient font-black text-xl" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>AT</span>
+          <div className="hidden md:flex items-center gap-7">
+            {[["About", "about"], ["Experience", "experience"], ["Projects", "projects"], ["Skills", "skills"], ["Contact", "contact"]].map(([label, id]) => (
+              <a key={id} href={`#${id}`} className="text-sm font-medium text-slate-400 hover:text-white transition-colors" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                {label}
               </a>
             ))}
           </div>
-          <a href="#contact" className="btn-gold px-5 py-2 rounded-full text-sm hidden md:block">
-            Hire Me
+          <a href="https://www.tiktok.com/@ahnafthaqeef" target="_blank" rel="noopener noreferrer" className="btn-primary px-4 py-2 rounded-full text-xs hidden md:block">
+            Follow Me
           </a>
         </div>
       </nav>
 
-      {/* ── HERO ────────────────────────────────────────────────────── */}
+      {/* ── HERO ── */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-        {/* Ambient glow */}
         <div className="hero-glow absolute inset-0 pointer-events-none" />
 
         {/* Orbital rings */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
-          <div
-            className="spin-slow absolute"
-            style={{
-              width: 580,
-              height: 220,
-              border: "1.5px solid rgba(255,180,0,0.18)",
-              borderRadius: "50%",
-              transform: "rotateX(72deg)",
-            }}
-          />
-          <div
-            className="spin-reverse absolute"
-            style={{
-              width: 800,
-              height: 300,
-              border: "1px solid rgba(0,170,239,0.07)",
-              borderRadius: "50%",
-              transform: "rotateX(72deg)",
-            }}
-          />
-          {/* Sparks */}
-          <div className="pulse-glow absolute w-2 h-2 rounded-full" style={{ background: "#FFD166", boxShadow: "0 0 14px #FFD166", top: "37%", left: "63%" }} />
-          <div className="pulse-glow absolute w-1 h-1 rounded-full" style={{ background: "#00AAEF", boxShadow: "0 0 10px #00AAEF", top: "56%", left: "34%", animationDelay: "1.5s" }} />
-          <div className="pulse-glow absolute w-1.5 h-1.5 rounded-full" style={{ background: "#FFB400", boxShadow: "0 0 10px #FFB400", top: "29%", left: "49%", animationDelay: "0.8s" }} />
-          <div className="pulse-glow absolute w-1 h-1 rounded-full" style={{ background: "#FFD166", boxShadow: "0 0 8px #FFD166", top: "65%", left: "60%", animationDelay: "2s" }} />
+          <div className="spin-slow absolute" style={{ width: 560, height: 200, border: "1.5px solid rgba(124,58,237,0.18)", borderRadius: "50%", transform: "rotateX(72deg)" }} />
+          <div className="spin-reverse absolute" style={{ width: 780, height: 290, border: "1px solid rgba(6,182,212,0.07)", borderRadius: "50%", transform: "rotateX(72deg)" }} />
+          <div className="pulse-glow absolute w-2 h-2 rounded-full" style={{ background: "#8b5cf6", boxShadow: "0 0 14px #8b5cf6", top: "37%", left: "63%" }} />
+          <div className="pulse-glow absolute w-1 h-1 rounded-full" style={{ background: "#06b6d4", boxShadow: "0 0 10px #06b6d4", top: "56%", left: "34%", animationDelay: "1.5s" }} />
+          <div className="pulse-glow absolute w-1.5 h-1.5 rounded-full" style={{ background: "#7c3aed", boxShadow: "0 0 10px #7c3aed", top: "29%", left: "49%", animationDelay: "0.8s" }} />
         </div>
 
-        {/* Content */}
         <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
-          <p className="section-label mb-6 tracking-widest">AI Innovation Leader · Malaysia</p>
+          <p className="section-label mb-5 tracking-widest">AI Automation Educator · Malaysia</p>
 
           <h1
-            className="text-gold-gradient font-black leading-none mb-5"
-            style={{ fontSize: "clamp(3.5rem, 10vw, 7.5rem)" }}
+            className="text-gradient font-black leading-none mb-4"
+            style={{ fontSize: "clamp(3rem, 9vw, 7rem)", fontFamily: "'Space Grotesk', sans-serif" }}
           >
-            Ahnaf<br />Thaqeef
+            Ahnaf Thaqeef
           </h1>
 
-          <p className="text-neon text-lg font-bold mb-4 tracking-wide">
-            Building Enterprise AI · From Prototype to Production
+          <p className="text-neon text-base font-semibold mb-3 tracking-widest uppercase" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+            Building AI Tools · Teaching Automation · Made for Malaysia
           </p>
 
-          <p className="text-gray-400 text-lg max-w-xl mx-auto mb-10 leading-relaxed">
-            I design and ship AI-powered solutions — RAG systems, LLM copilots,
-            document intelligence, and analytics tools — that convert business
-            problems into working software within days.
+          <p className="text-slate-400 text-base max-w-2xl mx-auto mb-6 leading-relaxed">
+            Nestlé Malaysia professional who builds AI tools and automations — and teaches Malaysians how to do the same. 16+ live apps shipped. Documenting every build in public so you can learn from it.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#projects" className="btn-gold px-8 py-4 rounded-full">
-              View My Work ↓
+          {/* Contact row */}
+          <div className="flex flex-wrap justify-center gap-2 mb-8">
+            <a href="mailto:ahnafthaqeef@gmail.com" className="data-val hover:opacity-80 transition-opacity">ahnafthaqeef@gmail.com</a>
+            <a href="https://www.linkedin.com/in/muhamad-ahnaf-thaqeef-949ab014a/" target="_blank" rel="noopener noreferrer" className="data-val hover:opacity-80 transition-opacity">linkedin.com/in/muhamad-ahnaf-thaqeef</a>
+            <a href="https://www.tiktok.com/@ahnafthaqeef" target="_blank" rel="noopener noreferrer" className="data-val hover:opacity-80 transition-opacity">@ahnafthaqeef</a>
+            <a href="https://www.threads.net/@ahnafthaqeef" target="_blank" rel="noopener noreferrer" className="data-val hover:opacity-80 transition-opacity">@ahnafthaqeef</a>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+            <a href="#experience" className="btn-primary px-8 py-3.5 rounded-full">
+              Watch Me Build ↓
             </a>
-            <a href="#contact" className="btn-outline px-8 py-4 rounded-full">
-              Let&apos;s Connect
+            <a href="#projects" className="btn-outline px-8 py-3.5 rounded-full">
+              Live Projects ↗
             </a>
           </div>
 
           {/* Stats */}
-          <div
-            className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-16 pt-10"
-            style={{ borderTop: "1px solid rgba(255,180,0,0.1)" }}
-          >
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-8" style={{ borderTop: "1px solid rgba(124,58,237,0.12)" }}>
             {stats.map((s) => (
               <div key={s.label} className="text-center">
-                <p className="text-gold-gradient font-black text-3xl">{s.value}</p>
-                <p className="text-gray-600 text-xs mt-1 uppercase tracking-widest">{s.label}</p>
+                <p className="text-gradient font-black text-2xl" style={{ fontFamily: "'JetBrains Mono', monospace" }}>{s.value}</p>
+                <p className="text-slate-600 text-xs mt-1 uppercase tracking-widest">{s.label}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── ABOUT ───────────────────────────────────────────────────── */}
-      <section id="about" className="py-28 px-6">
+      {/* ── ABOUT ── */}
+      <section id="about" className="py-24 px-6">
         <div className="max-w-5xl mx-auto">
-          <div className="gold-divider mb-16" />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <div>
-              <p className="section-label mb-4">About</p>
-              <h2 className="text-4xl font-bold text-white mb-6 leading-tight">
-                I turn AI ideas into{" "}
-                <span className="text-gold-gradient">working products</span>
-              </h2>
-              <p className="text-gray-400 leading-relaxed mb-4">
-                Based in Malaysia, I build AI-powered applications at the intersection
-                of business strategy and technical execution. My focus is enterprise AI —
-                solutions that don&apos;t just demo well, but scale into production.
-              </p>
-              <p className="text-gray-400 leading-relaxed">
-                I&apos;ve shipped 16+ AI applications across financial intelligence,
-                document processing, event management, and productivity — all live,
-                running on lean infrastructure.
-              </p>
-            </div>
-            <div className="space-y-4">
-              {capabilities.map((cap) => (
-                <div key={cap.title} className="card-glow rounded-xl p-5 flex gap-4">
-                  <span className="text-2xl mt-0.5 shrink-0">{cap.icon}</span>
-                  <div>
-                    <h3 className="font-bold text-white mb-1">{cap.title}</h3>
-                    <p className="text-gray-500 text-sm leading-relaxed">{cap.desc}</p>
+          <div className="violet-divider mb-14" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-start">
+
+            {/* Photo + quick facts */}
+            <div className="flex flex-col items-center gap-5">
+              {/* Profile photo with gradient ring */}
+              <div
+                style={{
+                  background: "linear-gradient(135deg, #7c3aed, #06b6d4)",
+                  padding: "3px",
+                  borderRadius: "20px",
+                  display: "inline-block",
+                }}
+              >
+                <Image
+                  src="/profile.png"
+                  alt="Ahnaf Thaqeef"
+                  width={220}
+                  height={264}
+                  className="object-cover object-top"
+                  style={{ display: "block", borderRadius: "17px" }}
+                />
+              </div>
+
+              {/* Quick-facts */}
+              <div className="w-full space-y-2.5">
+                {[
+                  { label: "Employer", val: "Nestlé Malaysia" },
+                  { label: "Role", val: "THUB Specialist" },
+                  { label: "Location", val: "Cyberjaya, MY" },
+                  { label: "Education", val: "BEng Chemical, UM" },
+                  { label: "AI Apps", val: "16+ shipped" },
+                  { label: "Experience", val: "4+ yrs with AI" },
+                ].map((item) => (
+                  <div key={item.label} className="card-glow rounded-xl px-3 py-2.5 flex items-center justify-between gap-3">
+                    <span className="text-slate-600 text-xs uppercase tracking-widest" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{item.label}</span>
+                    <span className="text-slate-200 text-xs font-medium text-right">{item.val}</span>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
+
+            {/* Bio — spans 2 cols */}
+            <div className="md:col-span-2">
+              <p className="section-label mb-3">Professional Summary</p>
+              <h2 className="text-3xl font-bold text-white mb-5 leading-snug" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                Building AI that delivers <span className="text-gradient">measurable outcomes</span>
+              </h2>
+              <p className="text-slate-400 leading-relaxed mb-4">
+                Based in Malaysia, I operate at the intersection of enterprise operations and applied AI. My day job is Supply Chain at Nestlé — where I design and deploy AI systems that reduce costs, automate workflows, and generate analytics that inform leadership decisions. Outside of that, I independently ship AI applications that demonstrate what&apos;s possible when AI thinking meets product execution.
+              </p>
+              <p className="text-slate-400 leading-relaxed mb-6">
+                I don&apos;t just build demos. Every project I ship is live, publicly accessible, and built to production standard — running on lean cloud infrastructure, with real AI capabilities that solve real problems.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {["Enterprise AI", "RAG / LLM", "Document Intelligence", "Supply Chain Analytics", "Full-Stack Dev", "Solution Architecture"].map((tag) => (
+                  <span key={tag} className="skill-chip text-xs">{tag}</span>
+                ))}
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* ── PROJECTS ────────────────────────────────────────────────── */}
-      <section id="projects" className="py-28 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="gold-divider mb-16" />
-          <div className="text-center mb-14">
-            <p className="section-label mb-3">Live Projects</p>
-            <h2 className="text-4xl font-bold text-white">
-              Things I&apos;ve <span className="text-gold-gradient">built &amp; shipped</span>
+      {/* ── EXPERIENCE ── */}
+      <section id="experience" className="py-24 px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="violet-divider mb-14" />
+          <div className="text-center mb-12">
+            <p className="section-label mb-3">Work Experience</p>
+            <h2 className="text-4xl font-bold text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              Enterprise <span className="text-gradient">impact delivered</span>
             </h2>
-            <p className="text-gray-500 mt-3 max-w-md mx-auto text-sm">
-              Every project is live, publicly accessible, and built to production standard.
+          </div>
+
+          <div className="space-y-8">
+            {experience.map((job, i) => (
+              <div key={i} className="card-glow rounded-2xl p-7" style={{ borderLeft: `3px solid ${job.accent}66` }}>
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-5">
+                  <div>
+                    <p className="text-slate-500 text-xs uppercase tracking-widest mb-1" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{job.company}</p>
+                    <h3 className="text-white font-bold text-lg leading-snug" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{job.role}</h3>
+                  </div>
+                  <div className="flex flex-col items-end gap-1 shrink-0">
+                    <span className="data-val">{job.period}</span>
+                    <span className="text-xs text-slate-600">{job.location}</span>
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  {job.highlights.map((h, j) => (
+                    <div key={j} className="flex gap-3 items-start">
+                      <span
+                        className="shrink-0 mt-0.5 px-2 py-0.5 rounded text-xs font-bold"
+                        style={{
+                          fontFamily: "'JetBrains Mono', monospace",
+                          background: `${job.accent}18`,
+                          border: `1px solid ${job.accent}40`,
+                          color: job.accent,
+                          whiteSpace: "nowrap",
+                        }}
+                      >
+                        {h.metric}
+                      </span>
+                      <p className="text-slate-400 text-sm leading-relaxed">{h.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── PROJECTS ── */}
+      <section id="projects" className="py-24 px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="violet-divider mb-14" />
+          <div className="text-center mb-12">
+            <p className="section-label mb-3">AI Portfolio</p>
+            <h2 className="text-4xl font-bold text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              Built & <span className="text-gradient">live in production</span>
+            </h2>
+            <p className="text-slate-500 mt-3 text-sm max-w-md mx-auto">
+              Every project is publicly accessible. No concept decks — working software.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {projects.map((p) => (
+          {/* Flagship card */}
+          <div className="card-glow rounded-2xl p-7 mb-5" style={{ borderLeft: `3px solid #8b5cf6`, borderTop: "1px solid rgba(139,92,246,0.2)" }}>
+            <div className="flex items-start justify-between gap-4 mb-4">
+              <div>
+                <div className="flex items-center gap-3 mb-2">
+                  <h3 className="text-white font-bold text-xl" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>FinAI Intel</h3>
+                  <span className="px-2 py-0.5 rounded text-xs font-bold" style={{ fontFamily: "'JetBrains Mono', monospace", background: "rgba(139,92,246,0.15)", border: "1px solid rgba(139,92,246,0.4)", color: "#a78bfa" }}>FLAGSHIP</span>
+                </div>
+                <p className="text-slate-400 text-sm leading-relaxed max-w-2xl">
+                  Enterprise financial intelligence suite — 6 AI tools built for finance teams and credit analysts. Purpose-built with CTOS/CCRIS domain knowledge.
+                </p>
+              </div>
+              <Link href="https://finai.ahnafthaqeef.com" target="_blank" rel="noopener noreferrer" className="shrink-0 btn-primary px-4 py-2 rounded-xl text-xs">
+                Live Demo ↗
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4">
+              {projects[0].tools.map((t, i) => (
+                <div key={i} className="flex items-start gap-2 text-sm">
+                  <span className="text-violet-400 shrink-0 mt-0.5">→</span>
+                  <span className="text-slate-400">{t}</span>
+                </div>
+              ))}
+            </div>
+            <div className="flex flex-wrap gap-2 pt-3" style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+              {projects[0].stack.map((s) => (
+                <span key={s} className="data-val" style={{ color: "#a78bfa", borderColor: "rgba(139,92,246,0.25)" }}>{s}</span>
+              ))}
+            </div>
+          </div>
+
+          {/* Other projects */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {projects.slice(1).map((p) => (
               <Link
                 key={p.title}
                 href={p.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="card-glow rounded-2xl p-6 flex flex-col group"
+                style={{ borderLeft: `3px solid ${p.accent}55` }}
               >
-                <div
-                  className="w-10 h-10 rounded-lg mb-4 flex items-center justify-center font-black text-sm"
-                  style={{
-                    background: `linear-gradient(135deg, ${p.accent}22, ${p.accent}44)`,
-                    border: `1px solid ${p.accent}55`,
-                    color: p.accent,
-                  }}
-                >
-                  {p.title.charAt(0)}
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="font-bold text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{p.title}</h3>
+                  <span className="text-xs px-1.5 py-0.5 rounded" style={{ fontFamily: "'JetBrains Mono', monospace", background: `${p.accent}15`, border: `1px solid ${p.accent}35`, color: p.accent }}>{p.label}</span>
                 </div>
-                <h3 className="font-bold text-white mb-2 group-hover:text-gold-gradient transition-all">
-                  {p.title}
-                </h3>
-                <p className="text-gray-500 text-sm leading-relaxed flex-1 mb-4">{p.desc}</p>
-                <div className="flex flex-wrap gap-2">
-                  {p.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-xs px-2.5 py-1 rounded-full"
-                      style={{
-                        background: `${p.accent}11`,
-                        border: `1px solid ${p.accent}33`,
-                        color: p.accent,
-                      }}
-                    >
-                      {tag}
-                    </span>
+                <p className="text-slate-500 text-sm leading-relaxed flex-1 mb-4">{p.desc}</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {p.stack.slice(0, 4).map((s) => (
+                    <span key={s} className="text-xs px-2 py-0.5 rounded-full" style={{ background: `${p.accent}10`, border: `1px solid ${p.accent}25`, color: p.accent, fontFamily: "'JetBrains Mono', monospace" }}>{s}</span>
                   ))}
                 </div>
               </Link>
             ))}
           </div>
 
-          <div className="text-center mt-10">
-            <Link
-              href="https://aibizmy.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-outline px-8 py-3 rounded-full inline-block text-sm"
-            >
-              View All Projects →
+          <div className="text-center mt-8">
+            <Link href="https://aibizmy.com" target="_blank" rel="noopener noreferrer" className="btn-outline px-8 py-3 rounded-full inline-block text-sm">
+              See All 16+ Projects at aibizmy.com →
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ── SKILLS ──────────────────────────────────────────────────── */}
-      <section id="skills" className="py-28 px-6">
+      {/* ── SKILLS ── */}
+      <section id="skills" className="py-24 px-6">
         <div className="max-w-5xl mx-auto">
-          <div className="gold-divider mb-16" />
-          <div className="text-center mb-14">
-            <p className="section-label mb-3">Tech Stack</p>
-            <h2 className="text-4xl font-bold text-white">
-              What I <span className="text-gold-gradient">work with</span>
+          <div className="violet-divider mb-14" />
+          <div className="text-center mb-12">
+            <p className="section-label mb-3">Technical Skills</p>
+            <h2 className="text-4xl font-bold text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              What I <span className="text-gradient">work with</span>
             </h2>
           </div>
-          <div className="flex flex-wrap gap-3 justify-center">
-            {skills.map((s) => (
-              <span key={s} className="skill-chip">{s}</span>
+          <div className="space-y-6">
+            {skillGroups.map((g) => (
+              <div key={g.label} className="card-glow rounded-xl p-5">
+                <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: g.accent, fontFamily: "'Space Grotesk', sans-serif" }}>{g.label}</p>
+                <div className="flex flex-wrap gap-2">
+                  {g.items.map((s) => (
+                    <span key={s} className="skill-chip text-xs">{s}</span>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── CONTACT ─────────────────────────────────────────────────── */}
-      <section id="contact" className="py-28 px-6">
-        <div className="max-w-3xl mx-auto text-center">
-          <div className="gold-divider mb-16" />
-          <p className="section-label mb-4">Get In Touch</p>
-          <h2 className="text-5xl font-black text-white mb-4">
-            Ready to <span className="text-gold-gradient">build?</span>
-          </h2>
-          <p className="text-gray-400 text-lg mb-10 max-w-md mx-auto leading-relaxed">
-            Looking for an AI innovation leader who ships real products — not just decks.
-            Let&apos;s talk.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-14">
-            <a
-              href="mailto:ahnafthaqeef@gmail.com"
-              className="btn-gold px-8 py-4 rounded-full"
-            >
-              Email Me ↗
-            </a>
-            <a
-              href="https://linkedin.com/in/ahnafthaqeef"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-outline px-8 py-4 rounded-full"
-            >
-              LinkedIn ↗
-            </a>
-          </div>
-
-          {/* Orbital decoration */}
-          <div className="flex items-center justify-center h-16 opacity-25">
-            <div
-              className="spin-slow absolute"
-              style={{ width: 100, height: 34, border: "1px solid #FFD166", borderRadius: "50%", transform: "rotateX(70deg)" }}
-            />
-            <div className="pulse-glow w-2 h-2 rounded-full" style={{ background: "#FFD166", boxShadow: "0 0 12px #FFD166" }} />
+      {/* ── EDUCATION & CERTS ── */}
+      <section id="education" className="py-24 px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="violet-divider mb-14" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {/* Education */}
+            <div>
+              <p className="section-label mb-6">Education</p>
+              <div className="space-y-4">
+                {education.map((e, i) => (
+                  <div key={i} className="card-glow rounded-xl p-5">
+                    <div className="flex items-start justify-between gap-3 mb-1">
+                      <p className="font-bold text-white text-sm" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{e.inst}</p>
+                      <span className="data-val shrink-0">{e.year}</span>
+                    </div>
+                    <p className="text-slate-300 text-sm mb-1">{e.degree}</p>
+                    <p className="text-slate-600 text-xs">{e.detail}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            {/* Certifications */}
+            <div>
+              <p className="section-label mb-6">Certifications</p>
+              <div className="space-y-3">
+                {certs.map((c, i) => (
+                  <div key={i} className="card-glow rounded-xl p-5">
+                    <div className="flex items-start justify-between gap-3 mb-1">
+                      <p className="font-semibold text-white text-sm" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{c.name}</p>
+                      <span className="data-val shrink-0">{c.date}</span>
+                    </div>
+                    <p className="text-slate-600 text-xs">{c.issuer}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── FOOTER ──────────────────────────────────────────────────── */}
-      <footer style={{ borderTop: "1px solid rgba(255,180,0,0.08)" }} className="py-8 px-6">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
-          <span className="text-gold-gradient font-black text-lg">Ahnaf Thaqeef</span>
-          <p className="text-gray-700 text-sm">© 2026 · Built with Next.js · Malaysia</p>
+      {/* ── EVENTS ── */}
+      <section id="events" className="py-24 px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="violet-divider mb-14" />
+          <div className="text-center mb-12">
+            <p className="section-label mb-3">Community & Events</p>
+            <h2 className="text-4xl font-bold text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              AI events I&apos;ve <span className="text-gradient">attended & competed in</span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Conferences */}
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "#06b6d4", fontFamily: "'Space Grotesk', sans-serif" }}>Conferences & Summits</p>
+              <div className="space-y-2.5">
+                {events.conferences.map((e, i) => (
+                  <div key={i} className="card-glow rounded-xl px-4 py-3" style={{ borderLeft: "2px solid rgba(6,182,212,0.3)" }}>
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex-1 min-w-0">
+                        <p className="text-slate-200 text-sm font-semibold leading-snug" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{e.name}</p>
+                        <p className="text-slate-600 text-xs mt-0.5">{e.org} · {e.location}</p>
+                      </div>
+                      <div className="flex flex-col items-end gap-1 shrink-0">
+                        <span className="data-val text-xs">{e.dates}</span>
+                        <span className="text-xs px-1.5 py-0.5 rounded" style={{ background: "rgba(6,182,212,0.1)", border: "1px solid rgba(6,182,212,0.2)", color: "#06b6d4", fontFamily: "'JetBrains Mono', monospace" }}>{e.type}</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Hackathons */}
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "#8b5cf6", fontFamily: "'Space Grotesk', sans-serif" }}>Hackathons & Competitions</p>
+              <div className="space-y-2.5">
+                {events.hackathons.map((e, i) => (
+                  <div key={i} className="card-glow rounded-xl px-4 py-3" style={{ borderLeft: "2px solid rgba(139,92,246,0.3)" }}>
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex-1 min-w-0">
+                        <p className="text-slate-200 text-sm font-semibold leading-snug" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{e.name}</p>
+                        <p className="text-slate-600 text-xs mt-0.5">{e.org} · {e.location}</p>
+                      </div>
+                      <div className="flex flex-col items-end gap-1 shrink-0">
+                        <span className="data-val text-xs">{e.dates}</span>
+                        <span className="text-xs px-1.5 py-0.5 rounded" style={{ background: "rgba(139,92,246,0.1)", border: "1px solid rgba(139,92,246,0.2)", color: "#a78bfa", fontFamily: "'JetBrains Mono', monospace" }}>Participant</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── CONTACT ── */}
+      <section id="contact" className="py-24 px-6">
+        <div className="max-w-3xl mx-auto text-center">
+          <div className="violet-divider mb-14" />
+          <p className="section-label mb-4">Get In Touch</p>
+          <h2 className="text-5xl font-black text-white mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+            Ready to <span className="text-gradient">build?</span>
+          </h2>
+          <p className="text-slate-400 text-lg mb-10 max-w-md mx-auto leading-relaxed">
+            Looking for an AI innovation leader who ships real products — not just decks. Let&apos;s talk.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+            <a href="https://mail.google.com/mail/?view=cm&to=ahnafthaqeef@gmail.com" target="_blank" rel="noopener noreferrer" className="btn-primary px-8 py-4 rounded-full">
+              Email Me ↗
+            </a>
+            <a href="https://www.linkedin.com/in/muhamad-ahnaf-thaqeef-949ab014a/" target="_blank" rel="noopener noreferrer" className="btn-outline px-8 py-4 rounded-full">
+              LinkedIn ↗
+            </a>
+          </div>
+          <div className="flex items-center justify-center h-14 opacity-30">
+            <div className="spin-slow absolute" style={{ width: 100, height: 34, border: "1px solid #7c3aed", borderRadius: "50%", transform: "rotateX(70deg)" }} />
+            <div className="pulse-glow w-2 h-2 rounded-full" style={{ background: "#8b5cf6", boxShadow: "0 0 12px #8b5cf6" }} />
+          </div>
+        </div>
+      </section>
+
+      {/* ── FOOTER ── */}
+      <footer style={{ borderTop: "1px solid rgba(124,58,237,0.1)" }} className="py-8 px-6">
+        <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+          <span className="text-gradient font-black text-lg" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Ahnaf Thaqeef</span>
+          <p className="text-slate-700 text-sm">© 2026 · Cyberjaya, Malaysia</p>
           <div className="flex items-center gap-5">
-            <a href="https://aibizmy.com" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-400 text-sm transition-colors">aibizmy.com</a>
-            <a href="https://linkedin.com/in/ahnafthaqeef" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-400 text-sm transition-colors">LinkedIn</a>
+            <a href="https://aibizmy.com" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-slate-400 text-sm transition-colors">aibizmy.com</a>
+            <a href="https://finai.ahnafthaqeef.com" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-slate-400 text-sm transition-colors">FinAI Intel</a>
+            <a href="https://www.linkedin.com/in/muhamad-ahnaf-thaqeef-949ab014a/" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-slate-400 text-sm transition-colors">LinkedIn</a>
           </div>
         </div>
       </footer>
