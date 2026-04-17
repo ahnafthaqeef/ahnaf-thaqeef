@@ -64,11 +64,20 @@ const projects = [
   {
     title: "AI Resume Builder",
     label: "LIVE",
-    desc: "ATS-optimised resume tailoring with streaming AI. Job description analysis, PDF/DOCX parsing, match scoring, and cover letter generation. Multi-step orchestration pipeline.",
+    desc: "2,000+ documents processed. ATS-optimised resume tailoring with streaming AI — JD analysis, PDF/DOCX parsing, match scoring, and cover letter generation. BYOK architecture with Supabase RLS for secure multi-tenant access.",
     tools: [],
-    stack: ["Next.js 15", "Groq SDK", "Supabase", "pdf-parse", "mammoth", "Streaming SSE"],
+    stack: ["Next.js 15", "Groq SDK", "Supabase", "BYOK", "Streaming SSE"],
     url: "https://resume.aibizmy.com",
     accent: "#7c3aed",
+  },
+  {
+    title: "n8n Automation Engine",
+    label: "PRODUCTION",
+    desc: "Self-healing automation engine managing complex multi-step AI workflows with zero manual intervention. Custom error handling with automatic retries, fallback routing, and instant Telegram/Slack alerting on failure.",
+    tools: [],
+    stack: ["n8n", "Multi-LLM", "Webhook Engineering", "Vector DB", "Telegram API"],
+    url: "https://aibizmy.com",
+    accent: "#f59e0b",
   },
   {
     title: "AcaraHQ",
@@ -123,28 +132,6 @@ const skillGroups = [
   },
 ];
 
-const events = {
-  conferences: [
-    { name: "Microsoft AI Tour KL 2025", dates: "May 2025", org: "Microsoft", location: "MITEC, Kuala Lumpur", type: "Summit" },
-    { name: "World AI Show Malaysia 2025", dates: "Oct 2025", org: "Trescon + MDEC", location: "DoubleTree Hilton, KL", type: "Summit" },
-    { name: "MDX Summit 2025", dates: "2025", org: "MDEC", location: "Kuala Lumpur", type: "Summit" },
-    { name: "Malaysia AI Summit (AI Summit KL)", dates: "Oct 2023 · Sep 2024", org: "MDEC", location: "Kuala Lumpur", type: "Summit" },
-    { name: "Malaysian AI Nexus (MAIN) Conference", dates: "Oct 2023 · Oct 2024", org: "MAIC / MOSTI", location: "KLCC, KL", type: "Conference" },
-    { name: "Malaysia Tech Week", dates: "Oct 2023 · Q4 2024", org: "MDEC", location: "Kuala Lumpur", type: "Festival" },
-    { name: "AWS Summit Kuala Lumpur", dates: "Aug 2023 · Aug 2024", org: "Amazon Web Services", location: "Kuala Lumpur", type: "Summit" },
-    { name: "Google Cloud Summit KL", dates: "Oct 2023", org: "Google Cloud", location: "Kuala Lumpur", type: "Summit" },
-    { name: "Microsoft AI Tour KL", dates: "Nov 2023", org: "Microsoft", location: "Kuala Lumpur", type: "Summit" },
-    { name: "World AI Show & Awards KL", dates: "Aug 2023", org: "Trescon", location: "Kuala Lumpur", type: "Summit" },
-  ],
-  hackathons: [
-    { name: "lablab.ai RAISE your HACK 2025", dates: "Jul 2025", org: "lablab.ai", location: "Online", type: "Hackathon" },
-    { name: "lablab.ai AI Genesis Hackathon", dates: "Nov 2025", org: "lablab.ai", location: "Online", type: "Hackathon" },
-    { name: "GenAI Hackathon 2024", dates: "Apr – May 2024", org: "AI Society Malaysia + Google Cloud", location: "Online / KL Finale", type: "Hackathon" },
-    { name: "CIMB 3D ASEAN Hackathon", dates: "Nov 2023", org: "CIMB Group", location: "Kuala Lumpur", type: "Hackathon" },
-    { name: "lablab.ai AI Hackathons", dates: "2023 – 2024", org: "lablab.ai", location: "Online", type: "Hackathon" },
-    { name: "AI Hackathon — Skool Community", dates: "2026", org: "Sambrina Romanov", location: "Online", type: "Hackathon" },
-  ],
-};
 
 const education = [
   {
@@ -159,19 +146,26 @@ const education = [
     detail: "CGPA 4.00 / 4.00 · First Class",
     year: "May 2017",
   },
+  {
+    inst: "MRSM Tun Abdul Razak",
+    degree: "SPM",
+    detail: "10A's",
+    year: "Nov 2015",
+  },
 ];
 
 const certs = [
   { name: "ISO 9001, 14001 & 45001 Internal Auditor", issuer: "Meta Minds International", date: "May 2025" },
+  { name: "ISO 9001, 14001 & 45001 Awareness", issuer: "Meta Minds International", date: "May 2025" },
   { name: "Graduate Engineer", issuer: "Board of Engineers Malaysia", date: "Feb 2023" },
   { name: "Six Sigma Yellow Belt", issuer: "6sigmastudy", date: "Jun 2023" },
 ];
 
 const stats = [
   { value: "16+", label: "AI Apps Shipped" },
-  { value: "MYR 500k+", label: "Measurable Business Impact" },
+  { value: "MYR 3M+", label: "Measurable Business Impact" },
   { value: "4+", label: "Live SaaS Products" },
-  { value: "3+", label: "Years with AI" },
+  { value: "4+", label: "Years with AI" },
 ];
 
 // ── Page ──────────────────────────────────────────────────────────────────────
@@ -415,7 +409,7 @@ export default function Home() {
           </div>
 
           {/* Other projects */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {projects.slice(1).map((p) => (
               <Link
                 key={p.title}
@@ -504,63 +498,6 @@ export default function Home() {
                       <span className="data-val shrink-0">{c.date}</span>
                     </div>
                     <p className="text-slate-600 text-xs">{c.issuer}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── EVENTS ── */}
-      <section id="events" className="py-24 px-6">
-        <div className="max-w-5xl mx-auto">
-          <div className="violet-divider mb-14" />
-          <div className="text-center mb-12">
-            <p className="section-label mb-3">Community & Events</p>
-            <h2 className="text-4xl font-bold text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-              AI events I&apos;ve <span className="text-gradient">attended & competed in</span>
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Conferences */}
-            <div>
-              <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "#06b6d4", fontFamily: "'Space Grotesk', sans-serif" }}>Conferences & Summits</p>
-              <div className="space-y-2.5">
-                {events.conferences.map((e, i) => (
-                  <div key={i} className="card-glow rounded-xl px-4 py-3" style={{ borderLeft: "2px solid rgba(6,182,212,0.3)" }}>
-                    <div className="flex items-start justify-between gap-3">
-                      <div className="flex-1 min-w-0">
-                        <p className="text-slate-200 text-sm font-semibold leading-snug" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{e.name}</p>
-                        <p className="text-slate-600 text-xs mt-0.5">{e.org} · {e.location}</p>
-                      </div>
-                      <div className="flex flex-col items-end gap-1 shrink-0">
-                        <span className="data-val text-xs">{e.dates}</span>
-                        <span className="text-xs px-1.5 py-0.5 rounded" style={{ background: "rgba(6,182,212,0.1)", border: "1px solid rgba(6,182,212,0.2)", color: "#06b6d4", fontFamily: "'JetBrains Mono', monospace" }}>{e.type}</span>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Hackathons */}
-            <div>
-              <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "#8b5cf6", fontFamily: "'Space Grotesk', sans-serif" }}>Hackathons & Competitions</p>
-              <div className="space-y-2.5">
-                {events.hackathons.map((e, i) => (
-                  <div key={i} className="card-glow rounded-xl px-4 py-3" style={{ borderLeft: "2px solid rgba(139,92,246,0.3)" }}>
-                    <div className="flex items-start justify-between gap-3">
-                      <div className="flex-1 min-w-0">
-                        <p className="text-slate-200 text-sm font-semibold leading-snug" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{e.name}</p>
-                        <p className="text-slate-600 text-xs mt-0.5">{e.org} · {e.location}</p>
-                      </div>
-                      <div className="flex flex-col items-end gap-1 shrink-0">
-                        <span className="data-val text-xs">{e.dates}</span>
-                        <span className="text-xs px-1.5 py-0.5 rounded" style={{ background: "rgba(139,92,246,0.1)", border: "1px solid rgba(139,92,246,0.2)", color: "#a78bfa", fontFamily: "'JetBrains Mono', monospace" }}>Participant</span>
-                      </div>
-                    </div>
                   </div>
                 ))}
               </div>
