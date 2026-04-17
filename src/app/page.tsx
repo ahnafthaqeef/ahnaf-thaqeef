@@ -6,7 +6,7 @@ import Image from "next/image";
 const experience = [
   {
     company: "Nestlé Malaysia",
-    role: "Transport Hub (THUB) Specialist — Supply Chain",
+    role: "THUB Specialist, Nestlé",
     period: "Jan 2025 – Present",
     location: "Selangor, Malaysia",
     accent: "#7c3aed",
