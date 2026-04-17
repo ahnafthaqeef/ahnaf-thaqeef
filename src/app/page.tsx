@@ -170,8 +170,8 @@ const certs = [
 const stats = [
   { value: "16+", label: "AI Apps Shipped" },
   { value: "MYR 500k+", label: "Measurable Business Impact" },
-  { value: "3+", label: "Live SaaS Products" },
-  { value: "4+", label: "Years with AI" },
+  { value: "4+", label: "Live SaaS Products" },
+  { value: "3+", label: "Years with AI" },
 ];
 
 // ── Page ──────────────────────────────────────────────────────────────────────
