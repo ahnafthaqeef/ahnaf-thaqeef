@@ -191,9 +191,6 @@ export default function Home() {
               </a>
             ))}
           </div>
-          <a href="https://www.tiktok.com/@ahnafthaqeef" target="_blank" rel="noopener noreferrer" className="btn-primary px-4 py-2 rounded-full text-xs hidden md:block">
-            Follow Me
-          </a>
         </div>
       </nav>
 
@@ -232,8 +229,6 @@ export default function Home() {
           <div className="flex flex-wrap justify-center gap-2 mb-8">
             <a href="mailto:ahnafthaqeef@gmail.com" className="data-val hover:opacity-80 transition-opacity">ahnafthaqeef@gmail.com</a>
             <a href="https://www.linkedin.com/in/muhamad-ahnaf-thaqeef-949ab014a/" target="_blank" rel="noopener noreferrer" className="data-val hover:opacity-80 transition-opacity">linkedin.com/in/muhamad-ahnaf-thaqeef</a>
-            <a href="https://www.tiktok.com/@ahnafthaqeef" target="_blank" rel="noopener noreferrer" className="data-val hover:opacity-80 transition-opacity">@ahnafthaqeef</a>
-            <a href="https://www.threads.net/@ahnafthaqeef" target="_blank" rel="noopener noreferrer" className="data-val hover:opacity-80 transition-opacity">@ahnafthaqeef</a>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
