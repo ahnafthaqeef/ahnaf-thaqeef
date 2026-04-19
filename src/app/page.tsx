@@ -5,6 +5,19 @@ import Image from "next/image";
 
 const experience = [
   {
+    company: "aibizmy.com",
+    role: "AI Systems Architect & Founder",
+    period: "2023 – Present",
+    location: "Malaysia (Remote)",
+    accent: "#10b981",
+    highlights: [
+      { metric: "16+", desc: "production AI apps independently architected, deployed, and maintained for the Malaysian and SEA market" },
+      { metric: "Multi-LLM", desc: "self-healing n8n automation engine orchestrating Claude, Groq, OpenAI, Gemini — zero manual intervention on mission-critical workflows" },
+      { metric: "RAG + pgvector", desc: "retrieval-augmented pipelines with vector DB integration (Pinecone, Weaviate, pgvector) for context-aware, memory-enabled AI outputs" },
+      { metric: "BYOK", desc: "multi-tenant SaaS architecture with per-user API key isolation and Supabase Row Level Security" },
+    ],
+  },
+  {
     company: "Nestlé Malaysia",
     role: "THUB Specialist, Nestlé",
     period: "Jan 2025 – Present",
@@ -128,7 +141,7 @@ const skillGroups = [
   {
     label: "Tools",
     accent: "#475569",
-    items: ["Git", "Jira", "Confluence", "Power Automate", "n8n", "Playwright", "Whisper ASR", "FFmpeg"],
+    items: ["Git", "Jira", "Confluence", "Power Automate", "n8n", "Playwright", "Whisper ASR", "FFmpeg", "WhatsApp Business API", "CRM Integration", "Real-time Data Synchronisation"],
   },
 ];
 
@@ -433,10 +446,42 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="text-center mt-8">
-            <Link href="https://aibizmy.com" target="_blank" rel="noopener noreferrer" className="btn-outline px-8 py-3 rounded-full inline-block text-sm">
-              See All 16+ Projects at aibizmy.com →
-            </Link>
+        </div>
+      </section>
+
+      {/* ── TOOLS FUNNEL ── */}
+      <section className="py-16 px-6">
+        <div className="max-w-5xl mx-auto">
+          <div
+            className="card-glow rounded-2xl p-8 text-center"
+            style={{
+              borderTop: "1px solid rgba(139,92,246,0.3)",
+              borderBottom: "1px solid rgba(6,182,212,0.2)",
+            }}
+          >
+            <p className="section-label mb-3">My AI Toolkit</p>
+            <h2
+              className="text-3xl font-bold text-white mb-4"
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+            >
+              Explore All <span className="text-gradient">16+ Live Tools</span>
+            </h2>
+            <p className="text-slate-400 text-sm max-w-lg mx-auto mb-6 leading-relaxed">
+              Everything I&apos;ve shipped is publicly accessible at aibizmy.com — no login required.
+            </p>
+            <div className="flex flex-wrap justify-center gap-2 mb-6">
+              {["FinAI Intel", "AI Resume Builder", "AcaraHQ", "Halal Scanner", "and more"].map((t) => (
+                <span key={t} className="data-val">{t}</span>
+              ))}
+            </div>
+            <a
+              href="https://aibizmy.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary px-8 py-3.5 rounded-full inline-block"
+            >
+              Open aibizmy.com →
+            </a>
           </div>
         </div>
       </section>
@@ -515,7 +560,7 @@ export default function Home() {
             Ready to <span className="text-gradient">build?</span>
           </h2>
           <p className="text-slate-400 text-lg mb-10 max-w-md mx-auto leading-relaxed">
-            Looking for an AI innovation leader who ships real products — not just decks. Let&apos;s talk.
+            I build AI tools for Malaysian businesses and document every step. Whether you want to collaborate, hire, or just learn how it&apos;s done — reach out.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <a href="https://mail.google.com/mail/?view=cm&to=ahnafthaqeef@gmail.com" target="_blank" rel="noopener noreferrer" className="btn-primary px-8 py-4 rounded-full">
