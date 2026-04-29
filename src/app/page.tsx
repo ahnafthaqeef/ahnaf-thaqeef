@@ -11,7 +11,7 @@ const experience = [
     location: "Malaysia (Remote)",
     accent: "#10b981",
     highlights: [
-      { metric: "16+", desc: "production AI apps independently architected, deployed, and maintained for the Malaysian and SEA market" },
+      { metric: "20+", desc: "production AI apps independently architected, deployed, and maintained for the Malaysian and SEA market" },
       { metric: "Multi-LLM", desc: "self-healing n8n automation engine orchestrating Claude, Groq, OpenAI, Gemini — zero manual intervention on mission-critical workflows" },
       { metric: "RAG + pgvector", desc: "retrieval-augmented pipelines with vector DB integration (Pinecone, Weaviate, pgvector) for context-aware, memory-enabled AI outputs" },
       { metric: "BYOK", desc: "multi-tenant SaaS architecture with per-user API key isolation and Supabase Row Level Security" },
@@ -243,7 +243,7 @@ export default function Home() {
           </p>
 
           <p className="text-slate-400 text-base max-w-2xl mx-auto mb-6 leading-relaxed">
-            Nestlé Malaysia professional who builds AI tools and automations — and teaches Malaysians how to do the same. 16+ live apps shipped. Documenting every build in public so you can learn from it.
+            Nestlé Malaysia professional who builds AI tools and automations — and teaches Malaysians how to do the same. 20+ live apps shipped. Documenting every build in public so you can learn from it.
           </p>
 
           {/* Contact row */}
@@ -307,7 +307,7 @@ export default function Home() {
                   { label: "Role", val: "THUB Specialist" },
                   { label: "Location", val: "Cyberjaya, MY" },
                   { label: "Education", val: "BEng Chemical, UM" },
-                  { label: "AI Apps", val: "16+ shipped" },
+                  { label: "AI Apps", val: "20+ shipped" },
                   { label: "Experience", val: "4+ yrs with AI" },
                 ].map((item) => (
                   <div key={item.label} className="card-glow rounded-xl px-3 py-2.5 flex items-center justify-between gap-3">
@@ -478,7 +478,7 @@ export default function Home() {
               className="text-3xl font-bold text-white mb-4"
               style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
-              Explore All <span className="text-gradient">16+ Live Tools</span>
+              Explore All <span className="text-gradient">20+ Live Tools</span>
             </h2>
             <p className="text-slate-400 text-sm max-w-lg mx-auto mb-6 leading-relaxed">
               Everything I&apos;ve shipped is publicly accessible at aibizmy.com — no login required.
