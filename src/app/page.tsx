@@ -110,6 +110,20 @@ const projects = [
     url: "https://halal.aibizmy.com",
     accent: "#10b981",
   },
+  {
+    title: "CX Intelligence Suite",
+    label: "LIVE",
+    desc: "4-in-1 customer experience AI platform for SEA enterprise CX teams. Agentic AI architecture with multi-tool orchestration.",
+    tools: [
+      "Agentic Telco Service Bot — billing disputes, plan changes, technical support, complaint triage, and live CSAT capture via Claude tool use",
+      "Contact Center Intelligence — real-time CSAT tracking, AHT & FCR analytics, agent performance leaderboard, and AI-powered QA scoring",
+      "GenAI ROI Value Case Builder — input CC metrics → modelled ROI projection with cost savings, CSAT uplift, FTE productivity, and boardroom-ready PDF",
+      "Service Blueprint Generator — company type + scenario → structured service blueprint with CX journey, AI intervention points, and operating model implications",
+    ],
+    stack: ["Next.js", "TypeScript", "Claude API", "Agentic AI", "Tool Use", "Vercel"],
+    url: "https://cx.aibizmy.com",
+    accent: "#06b6d4",
+  },
 ];
 
 const skillGroups = [
@@ -175,9 +189,9 @@ const certs = [
 ];
 
 const stats = [
-  { value: "16+", label: "AI Apps Shipped" },
+  { value: "20+", label: "AI Apps Shipped" },
   { value: "MYR 3M+", label: "Measurable Business Impact" },
-  { value: "4+", label: "Live SaaS Products" },
+  { value: "5+", label: "Live SaaS Products" },
   { value: "4+", label: "Years with AI" },
 ];
 
